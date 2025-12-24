@@ -1,0 +1,232 @@
+msgid ""
+msgstr ""
+"Language: ru\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+# ===== Common =====
+msgid "Inventory"
+msgstr "Инвентарь"
+
+msgid "Sales analytics"
+msgstr "Аналитика продаж"
+
+msgid "Add"
+msgstr "Добавить"
+
+msgid "Edit"
+msgstr "Редактировать"
+
+msgid "Delete"
+msgstr "Удалить"
+
+msgid "Save"
+msgstr "Сохранить"
+
+msgid "Cancel"
+msgstr "Отмена"
+
+msgid "Search..."
+msgstr "Поиск..."
+
+msgid "No products"
+msgstr "Нет товаров"
+
+# ===== Auth =====
+msgid "Login"
+msgstr "Вход"
+
+msgid "Logout"
+msgstr "Выход"
+
+msgid "Username"
+msgstr "Имя пользователя"
+
+msgid "Password"
+msgstr "Пароль"
+
+# ===== Inventory =====
+msgid "Stock"
+msgstr "Остаток"
+
+
+msgid "Quantity"
+msgstr "Количество"
+
+msgid "Sell"
+msgstr "Продать"
+
+msgid "Sell product"
+msgstr "Продать товар"
+
+msgid "Available stock"
+msgstr "Доступный остаток"
+
+msgid "Confirm sale"
+msgstr "Подтвердить продажу"
+
+msgid "Add product"
+msgstr "Добавить товар"
+
+msgid "Edit product"
+msgstr "Редактировать товар"
+
+msgid "Delete this product?"
+msgstr "Удалить этот товар?"
+
+msgid "Yes, delete"
+msgstr "Да, удалить"
+
+# ===== Prices =====
+msgid "Apply this price change to previous sales"
+msgstr "Применить изменение цены к прошлым продажам?"
+
+msgid "⚠ This will recalculate profit of ALL past sales"
+msgstr "⚠ Это пересчитает прибыль ВСЕХ прошлых продаж"
+
+# ===== Analytics cards =====
+msgid "Today revenue"
+msgstr "Доход за сегодня"
+
+msgid "Today profit"
+msgstr "Прибыль за сегодня"
+
+msgid "Monthly revenue"
+msgstr "Доход за месяц"
+
+msgid "Yearly revenue"
+msgstr "Доход за год"
+
+# ===== Charts =====
+msgid "Top 10 sold products"
+msgstr "Топ 10 продаваемых товаров"
+
+msgid "Top 10 profitable products"
+msgstr "Топ 10 прибыльных товаров"
+
+msgid "Product revenue and profit"
+msgstr "Доход и прибыль по товарам"
+
+msgid "Top sales share"
+msgstr "Доля топ-продаж"
+
+# ===== Chart labels =====
+msgid "Revenue"
+msgstr "Доход"
+
+msgid "Profit"
+msgstr "Прибыль"
+
+msgid "Sold"
+msgstr "Продано"
+
+msgid "Today"
+msgstr "Сегодня"
+
+msgid "Month"
+msgstr "Месяц"
+
+msgid "Year"
+msgstr "Год"
+
+
+msgid "Control Panel"
+msgstr "Панель управления"
+
+msgid "Many Places"
+msgstr "Все локации"
+
+msgid "By location"
+msgstr "По местоположению"
+
+msgid "Sorting"
+msgstr "Сортировка"
+
+msgid "Total products"
+msgstr "Всего товаров"
+
+msgid "Total sold"
+msgstr "Всего продано"
+
+msgid "Total revenue"
+msgstr "Общий доход"
+
+msgid "Net profit"
+msgstr "Чистая прибыль"
+
+msgid "Low stock"
+msgstr "Малый остаток"
+
+msgid "Picture"
+msgstr "Изображение"
+
+msgid "Product name"
+msgstr "Название товара"
+
+msgid "Location"
+msgstr "Местоположение"
+
+msgid "Purchase price"
+msgstr "Закупочная цена"
+
+msgid "Sell price"
+msgstr "Цена продажи"
+
+msgid "Left"
+msgstr "Остаток"
+
+msgid "Unit profit"
+msgstr "Прибыль за единицу"
+
+msgid "Total product profit"
+msgstr "Общая прибыль по товару"
+
+msgid "Welcome"
+msgstr "Добро пожаловать"
+
+msgid "Enter your details to log in."
+msgstr "Введите свои данные для входа в систему."
+
+msgid "Delete product"
+msgstr "Удалить товар"
+
+msgid "This product has sales history."
+msgstr "У этого товара есть история продаж."
+
+msgid "What do you want to do?"
+msgstr "Что вы хотите сделать?"
+
+msgid "Keep profit & hide product"
+msgstr "Сохранить прибыль и скрыть товар"
+
+msgid "Delete product and sales together"
+msgstr "Удалить товар и продажи вместе"
+
+msgid "Back to inventory"
+msgstr "Вернуться к инвентарю"
+
+msgid "Photo"
+msgstr "Фото"
+
+msgid "Name"
+msgstr "Название"
+
+msgid "One Sold"
+msgstr "Одна продажа"
+
+msgid "Dashboard"
+msgstr "Панель управления"
+
+msgid "Welcome. Use the menu to manage inventory and view sales analytics."
+msgstr "Добро пожаловать. Используйте меню для управления инвентарём и просмотра аналитики продаж."
+
+msgid "By name"
+msgstr "По названию"
+
+msgid "Stock (more → less)"
+msgstr "запас (больше → меньше)"
+
+msgid "Stock (less → more)"
+msgstr "запас (меньше → больше)"
+
+msgid "Sold (more → less)"
+msgstr "Продано (больше → меньше)"

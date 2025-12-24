@@ -1,0 +1,52 @@
+{% load static i18n %}
+<!doctype html>
+<html lang="{{ request.LANGUAGE_CODE }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Panel{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'app.css' %}">
+</head>
+
+<body>
+<div class="container">
+
+  
+
+  <main class="main">
+    <!-- Language switch -->
+    
+    <header class="topbar">
+      <div class="topbar-left">
+        <div class="logo"></div>
+        <div class="title">{% trans "Control Panel" %}</div>
+      </div>
+
+      <div class="topbar-right">
+        <form action="{% url 'set_language' %}" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="language" value="uz">
+          <input type="hidden" name="next" value="{{ request.path }}">
+          <button class="lang-btn {% if request.LANGUAGE_CODE == 'uz' %}active{% endif %}">
+            O‘zbek
+          </button>
+        </form>
+
+        <form action="{% url 'set_language' %}" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="language" value="ru">
+          <input type="hidden" name="next" value="{{ request.path }}">
+          <button class="lang-btn {% if request.LANGUAGE_CODE == 'ru' %}active{% endif %}">
+            Русский
+          </button>
+        </form>
+      </div>
+    </header>
+
+
+    {% block content %}{% endblock %}
+  </main>
+
+</div>
+</body>
+</html>

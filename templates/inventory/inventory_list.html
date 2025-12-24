@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+{% load i18n %}
+{% block title %}{% trans "Inventar" %}{% endblock %}
+{% block content %}
+
+<div class="panel">
+  <div class="tabs">
+    <a class="tab active" href="{% url 'inventory_list' %}">{% trans "Inventory" %}</a>
+    <a class="tab" href="{% url 'sales_analytics' %}">{% trans "Sales analytics" %}</a>
+    <div style="flex:1"></div>
+    <a class="btn primary" href="{% url 'product_add' %}">+ {% trans "Add" %}</a>
+  </div>
+
+  <form method="get" class="filters">
+    <div class="field">
+      <label>{% trans "Search..." %}</label>
+      <input name="q" value="{{ q }}" placeholder="{% trans 'Search...' %}">
+    </div>
+
+    <div class="field">
+      <label>{% trans "By location" %}</label>
+      <select name="location">
+        <option value="">{% trans "Many Places" %}</option>
+        {% for loc in locations %}
+          <option value="{{ loc.id }}" {% if location_id|slugify == loc.id|slugify %}selected{% endif %}>
+            {{ loc.name }}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="field">
+      <label>{% trans "Sorting" %}</label>
+      <select name="ordering">
+        <option value="name" {% if ordering == "name" %}selected{% endif %}>{% trans "By name" %}</option>
+        <option value="-stock" {% if ordering == "-stock" %}selected{% endif %}>{% trans "Stock (more → less)" %}</option>
+        <option value="stock" {% if ordering == "stock" %}selected{% endif %}>{% trans "Stock (less → more)" %}</option>
+        <option value="-sold" {% if ordering == "-sold" %}selected{% endif %}>{% trans "Sold (more → less)" %}</option>
+      </select>
+    </div>
+  </form>
+
+  <div class="cards">
+    <div class="card"><div class="k">{% trans "Total products" %}</div><div class="v">{{ total_products }}</div></div>
+    <div class="card"><div class="k">{% trans "Total sold" %}</div><div class="v">{{ total_sold }}</div></div>
+    <div class="card"><div class="k">{% trans "Total revenue" %}</div><div class="v">{{ total_revenue }}</div></div>
+    <div class="card"><div class="k">{% trans "Net profit" %}</div><div class="v good">{{ total_profit }}</div></div>
+    <div class="card"><div class="k">{% trans "Low stock" %}</div><div class="v bad">{{ low_stock_count }}</div></div>
+  </div>
+
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr>
+          <th>№</th>
+          <th>{% trans "Picture" %}</th>
+          <th>{% trans "Product name" %}</th>
+          <th>{% trans "Location" %}</th>
+          <th>{% trans "Purchase price" %}</th>
+          <th>{% trans "Sell price" %}</th>
+          <th>{% trans "Stock" %}</th>
+          <th>{% trans "Sold" %}</th>
+          <th>{% trans "Left" %}</th>
+          <th>{% trans "Unit profit" %}</th>
+          <th>{% trans "Total product profit" %}</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for p in products %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>
+            {% if p.image %}
+              <img class="img" src="{{ p.image.url }}">
+            {% else %}
+              <div class="img"></div>
+            {% endif %}
+          </td>
+          <td><b>{{ p.name }}</b></td>
+          <td><span class="badge">{{ p.location.name }}</span></td>
+          <td>{{ p.purchase_price }}</td>
+          <td>{{ p.sell_price }}</td>
+          <td>{{ p.stock }}</td>
+          <td>{{ p.sold }}</td>
+          <td>
+            {% if p.stock <= 10 %}
+              <span style="color:#ef4444;font-weight:900">● {{ p.stock }}</span>
+            {% else %}
+              {{ p.stock }}
+            {% endif %}
+          </td>
+          <td style="color:#16a34a;font-weight:900">{{ p.unit_profit }}</td>
+          <td style="color:#16a34a;font-weight:900">{{ p.total_profit }}</td>
+          <td class="right">
+            <a href="{% url 'sell_page' p.id %}" class="btn">
+              {% trans "Sell" %}
+            </a>           
+            <a class="btn" href="{% url 'product_edit' p.id %}">
+              {% trans "Edit" %}
+            </a>
+            <a class="btn danger" href="{% url 'product_delete' p.id %}">{% trans "Delete" %}</a>
+          </td>
+        </tr>
+      {% empty %}
+        <tr><td colspan="13" style="color:var(--muted)">{% trans "No products" %}</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

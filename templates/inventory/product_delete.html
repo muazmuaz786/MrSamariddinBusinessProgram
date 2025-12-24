@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Delete product" %}{% endblock %}
+
+{% block content %}
+<div class="panel" style="max-width:520px">
+
+  <h2 style="margin-top:0">
+    {% trans "Delete product" %}
+  </h2>
+
+  <p>
+    <strong>{{ p.name }}</strong><br>
+    {% trans "This product has sales history." %}
+  </p>
+
+  <p style="color:#ef4444;font-weight:700">
+    {% trans "What do you want to do?" %}
+  </p>
+
+  <!-- KEEP SALES -->
+  <form method="post" style="margin-bottom:12px">
+    {% csrf_token %}
+    <input type="hidden" name="keep_sales" value="1">
+    <button class="btn">
+      {% trans "Keep profit & hide product" %}
+    </button>
+  </form>
+
+  <!-- DELETE TOGETHER -->
+  <form method="post" action="{% url 'product_delete_force' p.id %}">
+    {% csrf_token %}
+    <button class="btn danger">
+      {% trans "Delete product and sales together" %}
+    </button>
+  </form>
+
+  <div style="margin-top:14px">
+    <a href="{% url 'inventory_list' %}" style="color:#6b7280">
+      ← {% trans "Back to inventory" %}
+    </a>
+  </div>
+
+</div>
+{% endblock %}

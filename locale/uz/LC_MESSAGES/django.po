@@ -1,0 +1,230 @@
+msgid ""
+msgstr ""
+"Language: uz\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+# ===== Common =====
+msgid "Inventory"
+msgstr "Inventar"
+
+msgid "Sales analytics"
+msgstr "Sotuvlar tahlili"
+
+msgid "Add"
+msgstr "Qo‘shish"
+
+msgid "Edit"
+msgstr "Tahrirlash"
+
+msgid "Delete"
+msgstr "O‘chirish"
+
+msgid "Save"
+msgstr "Saqlash"
+
+msgid "Cancel"
+msgstr "Bekor qilish"
+
+msgid "Search..."
+msgstr "Qidirish..."
+
+msgid "Search"
+msgstr "Qidirish"
+
+msgid "No products"
+msgstr "Mahsulotlar yo‘q"
+
+# ===== Auth =====
+msgid "Login"
+msgstr "Kirish"
+
+msgid "Logout"
+msgstr "Chiqish"
+
+msgid "Username"
+msgstr "Foydalanuvchi nomi"
+
+msgid "Password"
+msgstr "Parol"
+
+# ===== Inventory =====
+msgid "Stock"
+msgstr "Zaxira"
+
+msgid "Quantity"
+msgstr "Miqdor"
+
+msgid "Sell"
+msgstr "Sotish"
+
+msgid "Sell product"
+msgstr "Mahsulot sotish"
+
+msgid "Available stock"
+msgstr "Mavjud zaxira"
+
+msgid "Confirm sale"
+msgstr "Sotishni tasdiqlash"
+
+msgid "Add product"
+msgstr "Mahsulot qo‘shish"
+
+msgid "Edit product"
+msgstr "Mahsulotni tahrirlash"
+
+
+# ===== Prices =====
+msgid "Apply this price change to previous sales"
+msgstr "Bu narx o‘zgarishi oldingi sotuvlarga ham qo‘llansinmi?"
+
+msgid "⚠ This will recalculate profit of ALL past sales"
+msgstr "⚠ Bu barcha oldingi foydalarni qayta hisoblaydi"
+
+# ===== Analytics cards =====
+msgid "Today revenue"
+msgstr "Bugungi daromad"
+
+msgid "Today profit"
+msgstr "Bugungi foyda"
+
+msgid "Monthly revenue"
+msgstr "Oylik daromad"
+
+msgid "Yearly revenue"
+msgstr "Yillik daromad"
+
+# ===== Charts =====
+msgid "Top 10 sold products"
+msgstr "Top 10 sotilgan mahsulotlar"
+
+msgid "Top 10 profitable products"
+msgstr "Top 10 foydali mahsulotlar"
+
+msgid "Product revenue and profit"
+msgstr "Mahsulotlar bo‘yicha daromad va foyda"
+
+msgid "Top sales share"
+msgstr "Top sotuvlar ulushi"
+
+# ===== Chart labels =====
+msgid "Revenue"
+msgstr "Daromad"
+
+msgid "Profit"
+msgstr "Foyda"
+
+msgid "Sold"
+msgstr "Sotilgan"
+
+msgid "Today"
+msgstr "Bugun"
+
+msgid "Month"
+msgstr "Oy"
+
+msgid "Year"
+msgstr "Yil"
+
+
+
+msgid "Control Panel"
+msgstr "Boshqaruv paneli"
+
+msgid "Many Places"
+msgstr "Barcha joylar"
+
+msgid "By location"
+msgstr "Joylashuv bo'yicha"
+
+msgid "Sorting"
+msgstr "Saralash"
+
+msgid "Total products"
+msgstr "Jami mahsulotlar"
+
+msgid "Total sold"
+msgstr "Jami sotilgan"
+
+msgid "Total revenue"
+msgstr "Jami daromad"
+
+msgid "Net profit"
+msgstr "Sof foyda"
+
+msgid "Low stock"
+msgstr "Kam qoldi"
+
+msgid "Picture"
+msgstr "Rasm"
+
+msgid "Product name"
+msgstr "Mahsulot nomi"
+
+msgid "Location"
+msgstr "Joylashuv"
+
+msgid "Purchase price"
+msgstr "Sotib olish narxi"
+
+msgid "Sell price"
+msgstr "Sotish narxi"
+
+msgid "Left"
+msgstr "Qoldiq"
+
+msgid "Unit profit"
+msgstr "Birlik foydasi"
+
+msgid "Total product profit"
+msgstr "Jami mahsulot foydasi"
+
+msgid "Welcome"
+msgstr "Xush kelibsiz"
+
+msgid "Enter your details to log in."
+msgstr "Tizimga kirish uchun ma'lumotlaringizni kiriting"
+
+msgid "Delete product"
+msgstr "Mahsulotni o'chirish"
+
+msgid "This product has sales history."
+msgstr "Ushbu mahsulot savdo tarixiga ega."
+
+msgid "What do you want to do?"
+msgstr "Nima qilmoqchisiz?"
+
+msgid "Keep profit & hide product"
+msgstr "Foydani saqlang va mahsulotni yashiring"
+
+msgid "Delete product and sales together"
+msgstr "Mahsulot va sotuvlarni birgalikda yo'q qiling"
+
+msgid "Back to inventory"
+msgstr "Inventarizatsiyaga qaytish"
+
+msgid "Photo"
+msgstr "Rasm"
+
+msgid "Name"
+msgstr "Ism"
+
+msgid "One Sold"
+msgstr "Bitta Sotilgan"
+
+msgid "Dashboard"
+msgstr "Boshqaruv paneli"
+
+msgid "Welcome. Use the menu to manage inventory and view sales analytics."
+msgstr "Xush kelibsiz. Inventarizatsiyani boshqarish va savdo tahlillarini ko'rish uchun menyudan foydalaning."
+
+msgid "By name"
+msgstr "Nom bo'yicha"
+
+msgid "Reserve (more → less)"
+msgstr "Zaxira (ko'p → kam)"
+
+msgid "Reserve (less → more)"
+msgstr "Zaxira (kam → ko'p)"
+
+msgid "Sold (more → less)"
+msgstr "Sotilgan (ko'p → kam)"

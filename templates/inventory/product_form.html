@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="panel" style="max-width:720px">
+
+  <h2>
+    {% if mode == "add" %}
+      {% trans "Add product" %}
+    {% else %}
+      {% trans "Edit product" %}
+    {% endif %}
+  </h2>
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    {% if mode == "edit" %}
+      <hr style="margin:16px 0">
+
+      <label style="display:flex;gap:10px;align-items:flex-start">
+        <input type="checkbox" name="recalc_sales">
+        <span>
+          {% trans "Apply this price change to previous sales" %}
+          <br>
+          <small style="color:#ef4444">
+            {% trans "⚠ This will recalculate profit of ALL past sales" %}
+          </small>
+        </span>
+      </label>
+    {% endif %}
+
+    <div style="margin-top:20px">
+      <button class="btn primary" type="submit">
+        {% trans "Save" %}
+      </button>
+      <a class="btn" href="{% url 'inventory_list' %}">
+        {% trans "Cancel" %}
+      </a>
+    </div>
+  </form>
+
+</div>
+{% endblock %}

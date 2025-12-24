@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+{% load static i18n %}
+{% block title %}{% trans "Sotuvlar tahlili" %}{% endblock %}
+
+{% block content %}
+<div class="panel">
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <a class="tab" href="{% url 'inventory_list' %}">{% trans "Inventory" %}</a>
+    <a class="tab active" href="{% url 'sales_analytics' %}">{% trans "Sales analytics" %}</a>
+  </div>
+
+  <!-- Cards -->
+  <div class="cards">
+    <div class="card"><div class="k">{% trans "Today revenue" %}</div><div class="v">{{ today.revenue }}</div></div>
+    <div class="card"><div class="k">{% trans "Today profit" %}</div><div class="v good">{{ today.profit }}</div></div>
+    <div class="card"><div class="k">{% trans "Monthly revenue" %}</div><div class="v">{{ month.revenue }}</div></div>
+    <div class="card"><div class="k">{% trans "Yearly revenue" %}</div><div class="v">{{ year.revenue }}</div></div>
+  </div>
+
+  <!-- Charts -->
+  <div class="grid-2">
+    <div class="card">
+      <h3>{% trans "Top 10 sold products" %}</h3>
+      <div class="chart-wrap"><canvas id="topSalesChart"></canvas></div>
+    </div>
+
+    <div class="card">
+      <h3>{% trans "Top 10 profitable products" %}</h3>
+      <div class="chart-wrap"><canvas id="topProfitChart"></canvas></div>
+    </div>
+
+    <div class="card">
+      <h3>{% trans "Product revenue and profit" %}</h3>
+      <div class="chart-wrap"><canvas id="productBarChart"></canvas></div>
+    </div>
+
+    <div class="card">
+      <h3>{% trans "Top sales share" %}</h3>
+      <div class="chart-wrap pie"><canvas id="salesPieChart"></canvas></div>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ DATA ONLY -->
+<script>
+window.ANALYTICS = {
+  topSales: {
+    labels: {{ top_sales_labels|safe }},
+    values: {{ top_sales_values|safe }}
+  },
+  topProfit: {
+    labels: {{ top_profit_labels|safe }},
+    values: {{ top_profit_values|safe }}
+  },
+  bar: {
+    labels: {{ product_labels|safe }},
+    revenue: {{ product_revenue|safe }},
+    profit: {{ product_profit|safe }}
+  },
+  pie: {
+    labels: {{ pie_labels|safe }},
+    values: {{ pie_values|safe }}
+  }
+};
+</script>
+
+<script>
+window.I18N = {
+  revenue: "{% trans 'Revenue' %}",
+  profit: "{% trans 'Profit' %}",
+  sold: "{% trans 'Sold' %}",
+  today: "{% trans 'Today' %}",
+  month: "{% trans 'Month' %}",
+  year: "{% trans 'Year' %}"
+};
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'js/analystics.js' %}"></script>
+{% endblock %}

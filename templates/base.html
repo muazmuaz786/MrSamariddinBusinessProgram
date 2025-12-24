@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% load i18n %}
+
+{% block content %}
+
+<div class="page-tabs">
+  <a href="{% url 'inventory_list' %}"
+     class="tab {% if active_tab == 'inventory' %}active{% endif %}">
+     {% trans "Inventory" %}
+  </a>
+
+  <a href="{% url 'sales_analytics' %}"
+     class="tab {% if active_tab == 'analytics' %}active{% endif %}">
+     {% trans "Sales analytics" %}
+  </a>
+</div>
+
+
+
+{% block page_content %}{% endblock %}
+
+{% endblock %}
