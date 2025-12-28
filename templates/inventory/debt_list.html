@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Qarzlar</title>
+    <link rel="stylesheet" href="{% static 'debt.css' %}">
+</head>
+<body>
+
+<div class="page-wrapper">
+    <div class="container">
+
+        <!-- HEADER -->
+        <div class="page-header">
+            <h1 class="page-title">Qarzlar</h1>
+
+            <div class="header-actions">
+                <a href="{% url 'inventory_list' %}" class="btn-secondary">← Orqaga</a>
+                <a href="{% url 'debt_create' %}" class="btn-primary">+ Qarz berish</a>
+            </div>
+        </div>
+
+        <!-- SEARCH -->
+        <form method="get" class="search-box">
+            <input type="text" name="q" placeholder="Mijoz yoki mahsulot..." value="{{ q }}">
+            <button type="submit">Qidirish</button>
+        </form>
+
+        <!-- TABLE -->
+        <div class="table-wrapper">
+            <table class="debt-table">
+                <thead>
+                    <tr>
+                        <th>Mijoz</th>
+                        <th>Mahsulot</th>
+                        <th>Berilgan</th>
+                        <th>Qaytgan</th>
+                        <th>Qolgan</th>
+                        <th>Sana</th>
+                        <th>Amal</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                {% for debt in debts %}
+                    <tr>
+                        <td>{{ debt.customer_name }}</td>
+                        <td>{{ debt.product.name }}</td>
+                        <td>{{ debt.quantity }}</td>
+                        <td>{{ debt.returned }}</td>
+
+                        <td class="{% if debt.remaining == 0 %}done{% else %}danger{% endif %}">
+                            {{ debt.remaining }}
+                        </td>
+
+                        <td class="muted">
+                            {{ debt.created_at|date:"Y-m-d" }}
+                        </td>
+
+                        <td class="action-cell">
+
+                            {% if debt.remaining > 0 %}
+                            <form method="post" action="{% url 'debt_pay' debt.id %}" class="inline-form">
+                                {% csrf_token %}
+                                <input type="number"
+                                       name="qty"
+                                       min="1"
+                                       max="{{ debt.remaining }}"
+                                       placeholder="Qty"
+                                       required>
+                                <button class="btn-primary small">Qaytardi</button>
+                            </form>
+                            {% endif %}
+
+                            {% if debt.remaining == 0 %}
+                            <form method="post" action="{% url 'debt_delete' debt.id %}">
+                                {% csrf_token %}
+                                <button class="delete-btn">O‘chirish</button>
+                            </form>
+                            {% endif %}
+
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="7" class="empty">Hozircha qarz mavjud emas</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

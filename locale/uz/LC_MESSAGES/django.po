@@ -220,11 +220,20 @@ msgstr "Xush kelibsiz. Inventarizatsiyani boshqarish va savdo tahlillarini ko'ri
 msgid "By name"
 msgstr "Nom bo'yicha"
 
-msgid "Reserve (more → less)"
+msgid "Stock (more → less)"
 msgstr "Zaxira (ko'p → kam)"
 
-msgid "Reserve (less → more)"
+msgid "Stock (less → more)"
 msgstr "Zaxira (kam → ko'p)"
 
 msgid "Sold (more → less)"
 msgstr "Sotilgan (ko'p → kam)"
+
+msgid "Select Market"
+msgstr "Dokonni tanlang"
+
+msgid "Enter"
+msgstr "kirish"
+
+msgid "Enter password"
+msgstr "parolni kiriting"

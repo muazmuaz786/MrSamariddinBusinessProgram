@@ -1,0 +1,65 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% trans "Select Market" %}</title>
+    <link rel="stylesheet" href="{% static 'home.css' %}">
+</head>
+<body>
+
+    <div class="topbar-right">
+        <form action="{% url 'set_language' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="language" value="uz">
+            <input type="hidden" name="next" value="{{ request.path }}">
+            <button class="lang-btn {% if request.LANGUAGE_CODE == 'uz' %}active{% endif %}">
+                O‘zbek
+            </button>
+        </form>
+
+        <form action="{% url 'set_language' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="language" value="ru">
+            <input type="hidden" name="next" value="{{ request.path }}">
+            <button class="lang-btn {% if request.LANGUAGE_CODE == 'ru' %}active{% endif %}">
+                Русский
+            </button>
+        </form>
+    </div>
+
+    <div class="page-wrapper">
+        <div class="container">
+            <h1 class="page-title">{% trans "Select Market" %}</h1>
+
+            
+
+            <div class="market-row">
+                {% for market in markets %}
+                <form method="post" class="market-card">
+                    {% csrf_token %}
+                    <input type="hidden" name="market_id" value="{{ market.id }}">
+
+                    <div class="market-name">{{ market.name }}</div>
+
+                    {% if error_market_id == market.id %}
+                        <div class="error-box">{{ error_text }}</div>
+                    {% endif %}
+
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="{% trans 'Enter password' %}"
+                        required
+                    >
+
+                    <button type="submit" class="btn-primary">{% trans "Enter" %}</button>
+                </form>
+                {% endfor %}
+            </div>  
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,12 +1,15 @@
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.utils.timezone import now
 from django.db.models import Sum, F, DecimalField, ExpressionWrapper
+from inventory.models import Product
 from sales.models import Sale
 
+from inventory.decorators import market_required
 
-@login_required
+
+@market_required
 def sales_analytics(request):
+    market_id = request.session["market_id"]
     t = now()
     y, m = t.year, t.month
     d = t.date()
@@ -23,16 +26,17 @@ def sales_analytics(request):
 
     top_sales = (
         Sale.objects
+        .filter(market_id=market_id)
         .values("product__name")
         .annotate(total=Sum("quantity"))
         .order_by("-total")[:5]
     )
-
     top_sales_labels = [x["product__name"] for x in top_sales]
     top_sales_values = [x["total"] for x in top_sales]
     
     product_stats = (
         Sale.objects
+        .filter(market_id=market_id)
         .values("product__name")
         .annotate(
             revenue=Sum(
@@ -53,6 +57,7 @@ def sales_analytics(request):
 
     top_profit_qs = (
         Sale.objects
+        .filter(market_id=market_id)
         .values("product__name")
         .annotate(
             total_profit=Sum(
@@ -68,9 +73,9 @@ def sales_analytics(request):
 
     pie_qs = (
         Sale.objects
+        .filter(market_id=market_id)
         .values("product__name")
         .annotate(total=Sum("quantity"))
-        .order_by("-total")[:5]
     )
 
     pie_labels = [x["product__name"] for x in pie_qs]
@@ -88,9 +93,9 @@ def sales_analytics(request):
             "sold": a["sold"] or 0,
         }
 
-    today = agg(Sale.objects.filter(sold_at__date=d))
-    month = agg(Sale.objects.filter(sold_at__year=y, sold_at__month=m))
-    year  = agg(Sale.objects.filter(sold_at__year=y))
+    today = agg(Sale.objects.filter(market_id=market_id, sold_at__date=d))
+    month = agg(Sale.objects.filter(market_id=market_id, sold_at__year=y, sold_at__month=m))
+    year  = agg(Sale.objects.filter(market_id=market_id, sold_at__year=y))
 
     return render(request, "analytics/sales_analytics.html", {
         "today": today,

@@ -3,6 +3,8 @@
 
 {% block content %}
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
 <div class="page-tabs">
   <a href="{% url 'inventory_list' %}"
      class="tab {% if active_tab == 'inventory' %}active{% endif %}">

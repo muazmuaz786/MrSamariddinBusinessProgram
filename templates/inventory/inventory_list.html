@@ -3,13 +3,20 @@
 {% block title %}{% trans "Inventar" %}{% endblock %}
 {% block content %}
 
+
+
 <div class="panel">
   <div class="tabs">
     <a class="tab active" href="{% url 'inventory_list' %}">{% trans "Inventory" %}</a>
     <a class="tab" href="{% url 'sales_analytics' %}">{% trans "Sales analytics" %}</a>
     <div style="flex:1"></div>
+    <a href="{% url 'debt_list' %}" class="btn-secondary">
+      Qarzlar
+    </a>
     <a class="btn primary" href="{% url 'product_add' %}">+ {% trans "Add" %}</a>
   </div>
+
+      
 
   <form method="get" class="filters">
     <div class="field">

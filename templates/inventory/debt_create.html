@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Qarz berish</title>
+    <link rel="stylesheet" href="{% static 'debt.css' %}">
+</head>
+<body>
+
+<div class="page-wrapper">
+    <a href="{% url 'debt_list' %}" class="btn-secondary">← Orqaga</a><h1 class="page-title">Qarz Berish</h1>   
+    
+
+
+    <form method="post" class="form-box">
+        {% csrf_token %}
+
+        <label>Mijoz nomi</label>
+        <input type="text" name="customer" required>
+
+        <label>Mahsulot</label>
+        <select name="product_id" id="productSelect" required>
+            {% for p in products %}
+                <option value="{{ p.id }}" data-stock="{{ p.stock }}">
+                    {{ p.name }} (Qolgan: {{ p.stock }})
+                </option>
+            {% endfor %}
+        </select>
+
+        <label>Miqdor</label>
+        <input
+            type="number"
+            name="quantity"
+            id="qtyInput"
+            min="1"
+            value="1"
+            required
+        >
+
+        <button class="btn-primary">Saqlash</button>
+    </form>
+
+</div>
+
+<script>
+    const productSelect = document.getElementById("productSelect");
+    const qtyInput = document.getElementById("qtyInput");
+
+    function updateMax() {
+        const selected = productSelect.options[productSelect.selectedIndex];
+        const stock = selected.getAttribute("data-stock");
+
+        qtyInput.max = stock;
+        if (parseInt(qtyInput.value) > stock) {
+            qtyInput.value = stock;
+        }
+    }
+
+    productSelect.addEventListener("change", updateMax);
+
+    // 처음 로드될 때도 실행
+    updateMax();
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,268 @@
+* {
+    box-sizing: border-box;
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+    margin: 0;
+    background: #f4f7fb;
+    color: #0f172a;
+}
+
+.page-wrapper {
+    padding: 40px 60px;
+}
+
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.page-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 32px;
+    position: relative;
+}
+
+.page-title::after {
+    content: "";
+    width: 48px;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6, #22c55e);
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    border-radius: 10px;
+}
+
+
+.market-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 28px;
+    margin-top: 40px;
+}
+
+
+.market-card {
+    background: linear-gradient(160deg, #0f172a, #020617);
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 20px 50px rgba(0,0,0,.35);
+    transition: all .25s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.market-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 30px 70px rgba(0,0,0,.5);
+}
+
+.market-name {
+    color: white;
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 6px;
+}
+
+
+.market-card input {
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.05);
+    color: white;
+    outline: none;
+}
+
+.market-card input::placeholder {
+    color: rgba(255,255,255,0.5);
+}
+
+
+.btn-primary {
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 14px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    background: linear-gradient(135deg, #3b82f6, #22c55e);
+    color: #0f172a;
+    transition: .2s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(59,130,246,0.4);
+}
+
+
+.error-box {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.5);
+    color: #fecaca;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 14px;
+}
+
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    margin-top: 24px;
+}
+
+.table th {
+    background: #f1f5f9;
+    text-align: left;
+    padding: 14px;
+    font-weight: 600;
+}
+
+.table td {
+    padding: 14px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.table tr:hover {
+    background: #f9fafb;
+}
+
+
+.top-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.btn-secondary {
+    background: #e5e7eb;
+    padding: 10px 16px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #111827;
+    font-weight: 500;
+}
+
+.table-wrapper {
+    margin-top: 30px;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+.debt-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.debt-table thead {
+    background: #f1f5f9;
+}
+
+.debt-table th {
+    padding: 14px;
+    text-align: left;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.debt-table td {
+    padding: 14px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.debt-table tr:hover {
+    background: #f9fafb;
+}
+
+.debt-table .danger {
+    color: #dc2626;
+    font-weight: 600;
+}
+
+.action-cell {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.action-cell input {
+    width: 60px;
+    padding: 6px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+}
+
+.btn-primary.small {
+    padding: 6px 14px;
+    font-size: 13px;
+}
+
+.empty {
+    text-align: center;
+    padding: 20px;
+    color: #64748b;
+}
+
+
+
+.search-box {
+    margin: 20px 0;
+    display: flex;
+    gap: 10px;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+.search-box button {
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: none;
+    background: #2563eb;
+    color: white;
+}
+
+.debt-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.debt-table th,
+.debt-table td {
+    padding: 14px;
+    border-bottom: 1px solid #eee;
+}
+
+.debt-table th {
+    background: #f1f5f9;
+    text-align: left;
+}
+
+.delete-btn {
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}

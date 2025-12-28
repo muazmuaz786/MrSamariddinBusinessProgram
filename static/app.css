@@ -298,3 +298,23 @@ td:nth-child(12) {
   max-width: 360px;
   margin: 0 auto;
 }
+
+.top-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.btn-secondary {
+    background: #eef2ff;
+    color: #3730a3;
+    padding: 10px 16px;
+    border-radius: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.btn-secondary:hover {
+    background: #e0e7ff;
+}

@@ -230,3 +230,12 @@ msgstr "запас (меньше → больше)"
 
 msgid "Sold (more → less)"
 msgstr "Продано (больше → меньше)"
+
+msgid "Select Market"
+msgstr "Выберите магазин"
+
+msgid "Enter"
+msgstr "Войти"
+
+msgid "Enter password"
+msgstr "Введите пароль"

@@ -1,0 +1,199 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+    background:
+        radial-gradient(
+            800px 400px at 50% 0%,
+            rgba(56, 189, 248, 0.12),
+            transparent 70%
+        ),
+        linear-gradient(
+            180deg,
+            #f8fafc 0%,
+            #eef2f7 100%
+        );
+
+    color: #020617;
+}
+
+.container {
+    position: relative;
+}
+
+.container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 56px;
+    position: relative;
+}
+
+.page-title::after {
+    content: "";
+    display: block;
+    margin: 16px auto 0;
+    width: 60px;
+    height: 4px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, #38bdf8, #22c55e);
+}
+.market-row {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+.market-card {
+    width: 260px;
+    background:
+        linear-gradient(
+            180deg,
+            #0f172a 0%,
+            #020617 100%
+        );
+    border-radius: 22px;
+    padding: 28px 24px 32px;
+
+    box-shadow:
+        0 20px 40px rgba(2, 6, 23, 0.18),
+        0 60px 120px rgba(2, 6, 23, 0.12);
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.market-card:hover {
+    transform: translateY(-8px);
+    box-shadow:
+        0 30px 60px rgba(2, 6, 23, 0.25),
+        0 80px 160px rgba(2, 6, 23, 0.18);
+}
+
+
+
+.market-name {
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+/* =========================
+   ERROR BOX
+========================= */
+.error-box {
+    background: rgba(248, 113, 113, 0.12);
+    border: 1px solid rgba(248, 113, 113, 0.4);
+    color: #fecaca;
+    padding: 8px 10px;
+    border-radius: 10px;
+    font-size: 13px;
+    text-align: center;
+}
+
+/* =========================
+   INPUT
+========================= */
+.market-card input[type="password"] {
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #ffffff;
+    font-size: 14px;
+    outline: none;
+}
+
+.market-card input::placeholder {
+    color: #94a3b8;
+}
+
+.market-card input:focus {
+    border-color: #38bdf8;
+}
+.btn-primary {
+    margin-top: 10px;
+    padding: 13px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #38bdf8, #22c55e);
+    color: #020617;
+    font-weight: 600;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 30px rgba(56,189,248,0.35);
+}
+
+.page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;   /* 가로 중앙 */
+    align-items: center;       /* 세로 중앙 */
+}
+
+/* =========================
+   TOP RIGHT LANGUAGE BAR
+========================= */
+.topbar-right {
+    position: fixed;
+    top: 24px;
+    right: 32px;
+    display: flex;
+    gap: 10px;
+    z-index: 1000;
+}
+
+/* =========================
+   LANGUAGE BUTTON
+========================= */
+.lang-btn {
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    color: #020617;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: all 0.2s ease;
+}
+
+/* hover */
+.lang-btn:hover {
+    background: #ffffff;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    transform: translateY(-1px);
+}
+
+/* active language */
+.lang-btn.active {
+    background: linear-gradient(135deg, #38bdf8, #22c55e);
+    color: #020617;
+    font-weight: 600;
+    box-shadow: 0 6px 20px rgba(56,189,248,0.45);
+    border: none;
+}

@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
-    "accounts",
     "inventory",
     "sales",
     "analytics",
@@ -126,6 +125,8 @@ LANGUAGES = [
 
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -134,7 +135,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
-LOGIN_URL = "login"
-LOGIN_REDIRECT_URL = "inventory_list"
-LOGOUT_REDIRECT_URL = "login"
 
+# Security Settings
+# SESSION_COOKIE_HTTPONLY = True
+
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+SECURE_SSL_REDIRECT = False
+
+# # SECURE_BROWSER_XSS_FILTER = True
+# # SECURE_CONTENT_TYPE_NOSNIFF = True
+
+# X_FRAME_OPTIONS = "DENY"

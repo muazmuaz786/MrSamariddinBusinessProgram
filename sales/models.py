@@ -1,7 +1,8 @@
 from django.db import models
-from inventory.models import Product
+from inventory.models import Product, Market
 
 class Sale(models.Model):
+    market = models.ForeignKey(Market, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.PROTECT)
     quantity = models.PositiveIntegerField()
 
