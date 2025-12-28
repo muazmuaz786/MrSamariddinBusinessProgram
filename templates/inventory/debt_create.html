@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,17 +9,42 @@
 <body>
 
 <div class="page-wrapper">
-    <a href="{% url 'debt_list' %}" class="btn-secondary">← Orqaga</a><h1 class="page-title">Qarz Berish</h1>   
+    <a href="{% url 'debt_list' %}" class="btn-secondary">{% trans "← Back" %}</a>
+    <div class="top-actions">
+        <h1 class="page-title">{% trans "Add Debt" %}</h1>   
+
+
+        <div class="topbar-right">
+            <form action="{% url 'set_language' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="language" value="uz">
+                <input type="hidden" name="next" value="{{ request.path }}">
+                <button class="lang-btn {% if request.LANGUAGE_CODE == 'uz' %}active{% endif %}">
+                    O‘zbek
+                </button>
+            </form>
+
+            <form action="{% url 'set_language' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="language" value="ru">
+                <input type="hidden" name="next" value="{{ request.path }}">
+                <button class="lang-btn {% if request.LANGUAGE_CODE == 'ru' %}active{% endif %}">
+                    Русский
+                </button>
+            </form>
+        </div>
+    </div>
+   
     
 
 
     <form method="post" class="form-box">
         {% csrf_token %}
 
-        <label>Mijoz nomi</label>
+        <label>{% trans "Customer Name" %}</label>
         <input type="text" name="customer" required>
 
-        <label>Mahsulot</label>
+        <label>{% trans "Product" %}</label>
         <select name="product_id" id="productSelect" required>
             {% for p in products %}
                 <option value="{{ p.id }}" data-stock="{{ p.stock }}">
@@ -27,7 +53,7 @@
             {% endfor %}
         </select>
 
-        <label>Miqdor</label>
+        <label>{% trans "Quantity" %}</label>
         <input
             type="number"
             name="quantity"
@@ -37,7 +63,7 @@
             required
         >
 
-        <button class="btn-primary">Saqlash</button>
+        <button class="btn-primary">{% trans "Save" %}</button>
     </form>
 
 </div>

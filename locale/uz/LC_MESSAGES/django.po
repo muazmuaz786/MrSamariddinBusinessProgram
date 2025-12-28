@@ -237,3 +237,46 @@ msgstr "kirish"
 
 msgid "Enter password"
 msgstr "parolni kiriting"
+
+msgid "Debts"
+msgstr "Qarzlar"
+
+msgid "← Back"
+msgstr "← Orqaga"
+
+msgid "+ Add Debt"
+msgstr "+ Qarz berish"
+
+msgid "Customer"
+msgstr "Mijoz"
+
+msgid "Product"
+msgstr "Mahsulot"
+
+msgid "Given" 
+msgstr "Berilgan"
+
+msgid "Returned"
+msgstr "Pul qaytgan"
+
+msgid "Remaining"
+msgstr "Qolgan"
+
+msgid "Date"
+msgstr "Sana"
+
+msgid "Actions"
+msgstr "Amal"
+
+msgid "No debts available"
+msgstr "Hozircha Qarzlar Yoq"
+
+
+msgid "Add Debt"
+msgstr "Qarz berish"
+
+msgid "Customer or product..."
+msgstr "Mijoz yoki Mahsulot"
+
+msgid "Customer Name"
+msgstr "Mijoz nomi"

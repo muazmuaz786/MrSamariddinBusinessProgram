@@ -1,9 +1,10 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Qarzlar</title>
+    <title>{% trans "Debts" %}</title>
     <link rel="stylesheet" href="{% static 'debt.css' %}">
 </head>
 <body>
@@ -13,18 +14,45 @@
 
         <!-- HEADER -->
         <div class="page-header">
-            <h1 class="page-title">Qarzlar</h1>
+            <div class="top-actions">
+                <h1 class="page-title">{% trans "Debts" %}</h1>
+
+                <div class="topbar-right">
+                    <form action="{% url 'set_language' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="language" value="uz">
+                    <input type="hidden" name="next" value="{{ request.path }}">
+                    <button class="lang-btn {% if request.LANGUAGE_CODE == 'uz' %}active{% endif %}">
+                        O‘zbek
+                    </button>
+                    </form>
+
+                    <form action="{% url 'set_language' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="language" value="ru">
+                    <input type="hidden" name="next" value="{{ request.path }}">
+                    <button class="lang-btn {% if request.LANGUAGE_CODE == 'ru' %}active{% endif %}">
+                        Русский
+                    </button>
+                    </form>
+                </div>
+            </div>
+           
+
 
             <div class="header-actions">
-                <a href="{% url 'inventory_list' %}" class="btn-secondary">← Orqaga</a>
-                <a href="{% url 'debt_create' %}" class="btn-primary">+ Qarz berish</a>
+                <a href="{% url 'inventory_list' %}" class="btn-secondary">{% trans "← Back" %}</a>
+                <a href="{% url 'debt_create' %}" class="btn-primary">{% trans "+ Add Debt" %}</a>
             </div>
         </div>
 
+        
+            
+
         <!-- SEARCH -->
         <form method="get" class="search-box">
-            <input type="text" name="q" placeholder="Mijoz yoki mahsulot..." value="{{ q }}">
-            <button type="submit">Qidirish</button>
+            <input type="text" name="q" placeholder="{% trans "Customer or product..." %}" value="{{ q }}">
+            <button type="submit">{% trans "Search" %}</button>
         </form>
 
         <!-- TABLE -->
@@ -32,13 +60,13 @@
             <table class="debt-table">
                 <thead>
                     <tr>
-                        <th>Mijoz</th>
-                        <th>Mahsulot</th>
-                        <th>Berilgan</th>
-                        <th>Qaytgan</th>
-                        <th>Qolgan</th>
-                        <th>Sana</th>
-                        <th>Amal</th>
+                        <th>{% trans "Customer" %}</th>
+                        <th>{% trans "Product" %}</th>
+                        <th>{% trans "Given" %}</th>
+                        <th>{% trans "Returned" %}</th>
+                        <th>{% trans "Remaining" %}</th>
+                        <th>{% trans "Date" %}</th>
+                        <th>{% trans "Actions" %}</th>
                     </tr>
                 </thead>
 
@@ -69,14 +97,14 @@
                                        max="{{ debt.remaining }}"
                                        placeholder="Qty"
                                        required>
-                                <button class="btn-primary small">Qaytardi</button>
+                                <button class="btn-primary small">{% trans "Returned" %}</button>
                             </form>
                             {% endif %}
 
                             {% if debt.remaining == 0 %}
                             <form method="post" action="{% url 'debt_delete' debt.id %}">
                                 {% csrf_token %}
-                                <button class="delete-btn">O‘chirish</button>
+                                <button class="delete-btn">{% trans "Delete" %}</button>
                             </form>
                             {% endif %}
 
@@ -84,7 +112,7 @@
                     </tr>
                 {% empty %}
                     <tr>
-                        <td colspan="7" class="empty">Hozircha qarz mavjud emas</td>
+                        <td colspan="7" class="empty">{% trans "No debts available" %}</td>
                     </tr>
                 {% endfor %}
                 </tbody>

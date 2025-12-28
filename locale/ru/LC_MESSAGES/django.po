@@ -239,3 +239,45 @@ msgstr "Войти"
 
 msgid "Enter password"
 msgstr "Введите пароль"
+
+msgid "Debts"
+msgstr "Долги"
+
+msgid "← Back"
+msgstr "← Назад"
+
+msgid "+ Add Debt"
+msgstr "+ Добавить долг"
+
+msgid "Customer"
+msgstr "Клиент"
+
+msgid "Product"
+msgstr "Товар"
+
+msgid "Given"
+msgstr "Выдано"
+
+msgid "Returned"
+msgstr "Возвращено"
+
+msgid "Remaining"
+msgstr "Остаток"
+
+msgid "Date"
+msgstr "Дата"
+
+msgid "Actions"
+msgstr "Действия"
+
+msgid "No debts available"
+msgstr "Пока нет долгов"
+
+msgid "Add Debt"
+msgstr "Добавить долг"
+
+msgid "Customer or product..."
+msgstr "Клиент или товар..."
+
+msgid "Customer Name"
+msgstr "Имя клиента"

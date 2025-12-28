@@ -4,15 +4,21 @@ from django.db.models import Sum, F, DecimalField, ExpressionWrapper
 from inventory.models import Product
 from sales.models import Sale
 
+from django.shortcuts import redirect
+
 from inventory.decorators import market_required
 
 
 @market_required
 def sales_analytics(request):
-    market_id = request.session["market_id"]
+    market_id = request.session.get("market_id")
+    if not market_id:
+        return redirect("select_market")
     t = now()
     y, m = t.year, t.month
     d = t.date()
+
+    base_qs = Sale.objects.select_related("product").filter(market_id=market_id)
 
     revenue_expr = ExpressionWrapper(
         F("quantity") * F("sell_price"),
@@ -25,8 +31,7 @@ def sales_analytics(request):
     )
 
     top_sales = (
-        Sale.objects
-        .filter(market_id=market_id)
+        base_qs
         .values("product__name")
         .annotate(total=Sum("quantity"))
         .order_by("-total")[:5]
@@ -35,8 +40,7 @@ def sales_analytics(request):
     top_sales_values = [x["total"] for x in top_sales]
     
     product_stats = (
-        Sale.objects
-        .filter(market_id=market_id)
+        base_qs
         .values("product__name")
         .annotate(
             revenue=Sum(
@@ -56,8 +60,7 @@ def sales_analytics(request):
     product_profit = [float(x["profit"]) for x in product_stats]
 
     top_profit_qs = (
-        Sale.objects
-        .filter(market_id=market_id)
+        base_qs
         .values("product__name")
         .annotate(
             total_profit=Sum(
@@ -72,8 +75,7 @@ def sales_analytics(request):
     top_profit_values = [float(x["total_profit"] or 0) for x in top_profit_qs]
 
     pie_qs = (
-        Sale.objects
-        .filter(market_id=market_id)
+        base_qs
         .values("product__name")
         .annotate(total=Sum("quantity"))
     )
@@ -93,9 +95,9 @@ def sales_analytics(request):
             "sold": a["sold"] or 0,
         }
 
-    today = agg(Sale.objects.filter(market_id=market_id, sold_at__date=d))
-    month = agg(Sale.objects.filter(market_id=market_id, sold_at__year=y, sold_at__month=m))
-    year  = agg(Sale.objects.filter(market_id=market_id, sold_at__year=y))
+    today = agg(base_qs.filter(sold_at__date=d))
+    month = agg(base_qs.filter(sold_at__year=y, sold_at__month=m))
+    year  = agg(base_qs.filter(sold_at__year=y))
 
     return render(request, "analytics/sales_analytics.html", {
         "today": today,
